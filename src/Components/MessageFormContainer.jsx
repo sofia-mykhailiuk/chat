@@ -1,6 +1,6 @@
-import {connect} from "react-redux";
-import {sendMessage} from "../Redux/chat-reducer";
-import MessageForm from "./MessageForm";
+import {connect} from 'react-redux';
+import {sendMessage} from '../Redux/chat-reducer';
+import MessageForm from './MessageForm';
 
 let mapStateToProps = (state) => ({
     newMessageBody: state.newMessageBody

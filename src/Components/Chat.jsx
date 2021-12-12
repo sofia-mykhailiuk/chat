@@ -18,7 +18,7 @@ const Chat = (props) => {
         </div>
     })
 
-    return <div className="chat">
+    return <div className='chat'>
         {messagesItems}
     </div>
 }
