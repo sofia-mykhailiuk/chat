@@ -1,6 +1,8 @@
 import './Chat.css'
 
 const Chat = (props) => {
+    const sendMessageDate = (date) => date.toLocaleString().slice(-8,-3);
+
     const onMessageClick = (event) => {
         event.target.className === 'message ' || event.target.className === 'message right' ?
             props.removeMessage(event.target.id) :
@@ -13,12 +15,12 @@ const Chat = (props) => {
                     className={`message ${msg.authorId === 0 ? 'right' : ''}`}
                     onClick={onMessageClick}
         >
-            <div className='message-text'>{msg.message}</div>
-            <span className='message-date'>{msg.sendDate}</span>
+            <div className='message-text'>{msg.text}</div>
+            <span className='message-date'>{sendMessageDate(msg.sendDate)}</span>
         </div>
     })
 
-    return <div className="chat">
+    return <div className='chat'>
         {messagesItems}
     </div>
 }
