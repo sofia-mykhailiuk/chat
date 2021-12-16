@@ -1,13 +1,13 @@
 import './App.css';
-import ChatContainer from './Components/Chat/ChatContainer';
-import MessageFormContainer from './Components/MessageForm/MessageFormContainer';
+import MessageForm from "./Components/MessageForm/MessageForm";
+import Chat from "./Components/Chat/Chat";
 
 function App() {
     return (
         <div className='app-wrapper'>
             <div className='chat-wrapper'>
-                <ChatContainer />
-                <MessageFormContainer />
+                <Chat />
+                <MessageForm />
             </div>
         </div>
     );

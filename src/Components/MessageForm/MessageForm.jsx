@@ -1,36 +1,34 @@
 import './MessageForm.css'
-import sendIcon from '../../assets/svg/send-msg-icon.svg'
-import {useState} from 'react';
+import {useCallback, useState} from 'react';
+import {useDispatch} from "react-redux";
+import {sendMessageAC} from "../../Redux/chat-reducer";
 
-const MessageForm = (props) => {
+const MessageForm = () => {
     const [newMessageText, setNewMessageText] = useState('')
+
+    const dispatch = useDispatch()
+
+    const sendMessage = useCallback((msgTxt)=>{
+        let sendDate = new Date()
+        dispatch(sendMessageAC(msgTxt, sendDate))
+        setNewMessageText('')
+    }, [dispatch])
 
     const onNewMessageTextChange = (event) => {
         setNewMessageText(event.target.value)
     }
 
-    const sendMessage = () =>{
-        let sendDate = new Date()
-        props.sendMessage(newMessageText, sendDate)
-        setNewMessageText('')
-    }
-
-    const onSendMessageClick = () => {
+    const onSendMessageSubmit = (event) => {
+        event.preventDefault()
         if (newMessageText !== '') {
-           sendMessage()
+            sendMessage(newMessageText)
         }
     }
 
-    const onSendMessageKeyUp = (event) => {
-        if (event.key === 'Enter' && newMessageText !== '') {
-          sendMessage()
-        }
-    }
-
-    return <div className='message-form'>
-        <input type='text' value={newMessageText} onChange={onNewMessageTextChange} onKeyUp={onSendMessageKeyUp}/>
-        <img onClick={onSendMessageClick} src={sendIcon} alt='' draggable='false'/>
-    </div>
+    return <form className='message-form' onSubmit={onSendMessageSubmit}>
+        <input type='text' value={newMessageText} onChange={onNewMessageTextChange} />
+        <button type='submit'/>
+    </form>
 }
 
 export default MessageForm

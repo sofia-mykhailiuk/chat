@@ -25,8 +25,14 @@
     outline: none;
 }
 
-.message-form img  {
+.message-form button {
+    cursor: pointer;
+    border: none;
     height: 20px;
     width: 20px;
-    cursor: pointer;
+    background-color: unset;
+    background-image: url("/src/assets/svg/send-msg-icon.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }

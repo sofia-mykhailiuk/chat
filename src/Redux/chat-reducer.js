@@ -60,5 +60,5 @@ export const chatReducer = (state = initialState, action) => {
     }
 }
 
-export const sendMessage = (text, sendDate) => ({type: SEND_MESSAGE, text, sendDate})
-export const removeMessage = (id) => ({type: REMOVE_MESSAGE, id})
+export const sendMessageAC = (text, sendDate) => ({type: SEND_MESSAGE, text, sendDate})
+export const removeMessageAC = (id) => ({type: REMOVE_MESSAGE, id})
